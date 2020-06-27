@@ -18,8 +18,8 @@ class AttentionBiLSTM(nn.Module):
                                dropout=rnn_dropout, bidirectional=True)
 
         if self.rnn_type == 'GRU':
-            self.rnn = nn.LSTM(embedding_dim, hidden_size, batch_first=True,
-                               dropout=rnn_dropout, bidirectional=True, )
+            self.rnn = nn.GRU(embedding_dim, hidden_size, batch_first=True,
+                               dropout=rnn_dropout, bidirectional=True)
 
         self.biLSTM_hidden = 2 * hidden_size
         self.query = nn.Parameter(torch.randn(size=(self.biLSTM_hidden,)))
